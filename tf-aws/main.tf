@@ -111,8 +111,7 @@ resource "aws_instance" "example_vm" {
 
 
   tags = {
-    Name       = "demo-vm"
-    created_by = "Cloudify"
+    Name = "demo-vm"
   }
 
   # Lookup the correct AMI based on the region

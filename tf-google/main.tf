@@ -53,10 +53,6 @@ resource "google_compute_instance" "vm" {
     access_config {}
   }
 
-  tags = {
-    created_by = "Cloudify"
-  }
-
 }
 
 output "public_ip" {
