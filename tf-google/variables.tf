@@ -1,11 +1,11 @@
 # jq -c . /path/to/gce-creds.json
 variable "credentials_json" {
-  type = string
+  type        = string
   description = "Contents of a GCP JSON credentials file"
 }
 
 variable "project" {
-  type = string
+  type        = string
   description = "GCP project ID"
 }
 
@@ -15,38 +15,38 @@ variable "project" {
 # }
 
 variable "zone" {
-  type = string
+  type        = string
   description = "Zone to launch servers"
 }
 
 variable "admin_user" {
-  type = string
+  type        = string
   description = "Admin user for the image we're launching"
 }
 
 variable "admin_key_public" {
-  type = string
+  type        = string
   description = "Public SSH key of admin user"
 }
 
 variable "image" {
   type = object({
     project = string
-    family = string
+    family  = string
   })
   default = {
     project = "centos-cloud"
-    family = "centos-7"
+    family  = "centos-7"
   }
 }
 
 variable "prefix" {
-  type = string
+  type        = string
   description = "Resource name prefix"
-  default = "cfy"
+  default     = "cfy"
 }
 
 variable "instance_type" {
-  type = string
+  type        = string
   description = "VM instance_type"
 }
