@@ -52,6 +52,11 @@ resource "google_compute_instance" "vm" {
     network = google_compute_network.network.self_link
     access_config {}
   }
+
+  tags = {
+    created_by = "Cloudify"
+  }
+
 }
 
 output "public_ip" {
