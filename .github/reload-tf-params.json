@@ -1,0 +1,6 @@
+{
+  "source": "https://github.com/cloudify-community/tf-demo-web-environment/archive/refs/heads/main.zip",
+  "source_path": "tf-aws/",
+  "force": true
+}
+

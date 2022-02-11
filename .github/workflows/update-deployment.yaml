@@ -1,0 +1,28 @@
+name: Update Deployment
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths:
+    - deployment_inputs.yaml
+jobs:
+  develop:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Update deployment
+        uses: jrzeszutek/install-or-update-action@v1.2.1
+        with:
+          environment-name: $DEPLOYMENT_ID
+          blueprint-id: AWS-Web-Environment
+          delete-old-blueprint: false
+          inputs-file: "deployment_inputs.yaml"
+          outputs-file: /dev/null
+          
+env:
+  CLOUDIFY_HOST: ${{ secrets.CLOUDIFY_HOST }}
+  CLOUDIFY_USERNAME: ${{ secrets.CLOUDIFY_USERNAME }}
+  CLOUDIFY_PASSWORD: ${{ secrets.CLOUDIFY_PASSWORD }}
+  DEPLOYMENT_ID: ${{ secrets.DEPLOYMENT_ID }}
+  CLOUDIFY_SSL: ${{ secrets.CLOUDIFY_SSL }}

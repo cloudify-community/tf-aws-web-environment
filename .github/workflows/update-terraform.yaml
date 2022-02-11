@@ -1,0 +1,26 @@
+name: Reload Terraform
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths:
+    - tf-aws/*
+jobs:
+  develop:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Update Terraform
+        uses: cloudify-cosmo/execute-workflow-action@v1.1
+        with:
+          environment-name: $DEPLOYMENT_ID
+          workflow: "reload_terraform_template"
+          parameters-file: ".github/reload-tf-params.json"
+          
+env:
+  CLOUDIFY_HOST: ${{ secrets.CLOUDIFY_HOST }}
+  CLOUDIFY_USERNAME: ${{ secrets.CLOUDIFY_USERNAME }}
+  CLOUDIFY_PASSWORD: ${{ secrets.CLOUDIFY_PASSWORD }}
+  DEPLOYMENT_ID: ${{ secrets.DEPLOYMENT_ID }}
+  CLOUDIFY_SSL: ${{ secrets.CLOUDIFY_SSL }}
