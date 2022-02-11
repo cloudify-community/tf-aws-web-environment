@@ -1,4 +1,4 @@
 aws_region_name: us-west-1
 env_type: DEV
-nginx_port: 8080
+nginx_port: 80
 vm_count: 1
